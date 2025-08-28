@@ -1,0 +1,23 @@
+  <div  class="main-menu">
+     <div id="desk-nav-bar-links">
+      <p href="#" id="highlights" class="desk-top-tab-trigger">
+         Highlights
+        </p>
+     <p href="#" id="women" class="desk-top-tab-trigger">
+         Women
+        </p>
+     <p href="#" id="men" class="desk-top-tab-trigger">
+         Men
+        </p>
+     <p href="#" id="sl" class="desk-top-tab-trigger">
+         sl productions
+        </p>
+     </div>
+      {% for link in linklists.main-menu.links %}
+        <a href="{{ link.url }}" id="{{ link.title }}" class="{% if link.active %}active{% endif %}">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </div>
+
+   

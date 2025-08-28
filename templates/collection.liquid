@@ -1,0 +1,300 @@
+<style>
+
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px 40px;
+  }
+  
+  /* Added luxury fashion header with Shop Now button */
+  .collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0 60px;
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: capitalize;
+    
+  }
+  
+  .collection-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+    max-width: 70%;
+    line-height: 1.4;
+  }
+  
+  .shop-now-btn {
+    padding: 12px 24px;
+    border: 1px solid #333;
+    background: transparent;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .shop-now-btn:hover {
+    background: #333;
+    color: white;
+  }
+  
+  /* Luxury product grid with heart icons */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 60px 0;
+  }
+  
+  .product-card {
+    background: white;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .product-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f8f8f8;
+    margin-bottom: 20px;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Added heart wishlist icon */
+  .wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .wishlist-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .wishlist-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: #333;
+    fill: none;
+    stroke-width: 1.5;
+  }
+  
+  .product-info {
+    text-align: left;
+  }
+  
+  /* Added New Season label */
+  .product-label {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .product-brand {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+  }
+  
+  .product-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  
+  .product-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .price-compare {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 8px;
+  }
+  
+  .price-sale {
+  }
+  
+  .sold-out {
+    color: #e74c3c;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  /* Responsive design for mobile */
+  @media (max-width: 1200px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+    
+    .collection-header {
+      gap: 20px;
+      text-align: center;
+     padding: 0;
+        padding-top: 80px;
+    }
+    
+    .collection-title {
+      max-width: 100%;
+      font-size: 16px;
+    }
+    
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 40px 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .empty-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #333;
+  }
+  
+  .empty-text {
+    color: #666;
+    margin-bottom: 30px;
+  }
+</style>
+
+<div class="container">
+  <!-- Luxury fashion header with Shop Now button -->
+  <header class="collection-header">
+    <h1 class="collection-title">
+      {% if collection.title %}
+        {{ collection.title }}
+      {% else %}
+        New in: handpicked daily from the world's best brands and boutiques
+      {% endif %}
+      collections
+    </h1>
+    <a href="{{ routes.collections_url }}" class="shop-now-btn">Shop Now</a>
+  </header>
+
+  <!-- Product Grid -->
+  {% if collection.products.size > 0 %}
+    <div class="product-grid">
+      {% for product in collection.products %}
+        <article class="product-card">
+          <a href="{{ product.url }}">
+            <div class="product-image">
+              {% if product.featured_image %}
+                <img 
+                  src="{{ product.featured_image | img_url: '500x500' }}" 
+                  alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #ccc;">
+                  <svg width="60" height="60" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <!-- Added heart wishlist button -->
+              <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist({{ product.id }})">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <div class="product-info">
+              <!-- Added New Season label and brand structure -->
+              
+              <h3 class="product-brand">
+                                {{ product.title  }}
+
+              </h3>
+              
+              <p class="product-title">
+                click here to more info
+              </p>
+
+              <div class="product-price">
+                {% if product.compare_at_price > product.price %}
+                  <span class="price-sale">{{ product.price | money }}</span>
+                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                {% else %}
+                  {{ product.price | money }}
+                {% endif %}
+                
+                {% unless product.available %}
+                  <div class="sold-out">Sold Out</div>
+                {% endunless %}
+              </div>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <!-- Empty State -->
+    <div class="empty-state">
+      <h3 class="empty-title">No products found</h3>
+      <p class="empty-text">This collection is empty or no products match your criteria.</p>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+function toggleWishlist(productId) {
+  // Add wishlist functionality here
+  console.log('Toggle wishlist for product:', productId);
+}
+</script>

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>{{page_title}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {{content_for_header}}
+        
+        <link rel="stylesheet" href="{{'theme.css'| asset_url}}" type="text/css" media="all">
+        <link rel="stylesheet" href="{{'header.css'| asset_url}}" type="text/css" media="all">
+        <link rel="stylesheet" href="{{'landing-page.css'| asset_url}}" type="text/css" media="all">
+<!-- Locomotive Scroll CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.css">
+
+<!-- Locomotive Scroll JS -->
+<script defer src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+
+<!-- GSAP Core -->
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<!-- ScrollTrigger Plugin -->
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+</head>
+    <body data-scroll-container>
+{% section 'header' %}
+        {{content_for_layout}}
+    </body>
+    <script defer src="{{ 'header.js'| asset_url }}" ></script>
+    <script async="false" src="{{ 'menu-content.js'| asset_url }}" ></script>
+    <script async="false" src="{{ 'index.js'| asset_url }}" ></script>
+</html>

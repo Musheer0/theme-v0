@@ -1,0 +1,46 @@
+<header
+  data-scroll 
+  data-scroll-fixed 
+  data-scroll-target="#scroll-target"
+    data-is-home="{% if template == 'index' or request.page_type == 'index' %}true{% else %}false{% endif %}"
+  id="scroll-target"
+  class="site-header 
+  {% unless template == 'index' or request.page_type == 'index' %}
+    not-home
+  {% endunless %}
+  ">
+  {% render 'header-drop-down' %}
+   
+  <nav>
+    <!-- Mobile menu open button -->
+    <button id="mobile-menu-open" class="no-style mobile-only"> 
+      <img src="{{ 'menu.svg' | asset_url }}" class="icon-xl" alt="Open Menu">
+    </button>
+
+    <!-- Desktop main menu links -->
+    {% render 'links' %}
+
+  <a href="/">
+    <img src="{{ 'logo.png' | asset_url }}" class="logo-img" width="70" height="30" alt="">
+    </a>
+    <div class="right">
+      <!-- Customer links -->
+      {% if customer %}
+        <a href="/account">My Account</a>
+        <a href="/account/logout">Sign out</a>
+      {% else %}
+        <a href="/account/login">Sign in</a>
+      {% endif %}
+      <button type="button" class="no-style" style="position: relative;">
+        <img src="{{ 'search.svg' | asset_url }}" class="icon" alt="Cart">
+      </button>
+      {% render 'cart-btn' %}
+    </div>
+  </nav>
+</header>
+<style>
+  .site-header.not-home {
+  background: rgba(0, 0, 0);
+}
+
+</style>

@@ -1,0 +1,45 @@
+<div id="cart-drawer-parent">
+    <div id="drawer-close"></div>
+    <div id="cart-drawer" >
+  <div class="cart-header">
+    <div class="cart-drawer-close-btn cart-btn">
+         <button  class="no-style "> 
+      <img src="{{ 'close.svg' | asset_url }}" class="icon-xl" alt="Close Menu">
+    </button>
+    </div>
+    {% if cart.item_count == 0 %}
+      <p class="cart-drawer-title">Your cart is empty</p>
+      <p class="cart-drawer-desc">
+        NEED HELP? SPEAK TO ONE OF OUR AMBASSADORS AT:
+        +1 646 889 1961
+        MON - FRI 10AM - 8PM AND SAT 10AM - 7PM
+      </p>
+      <button class="cart-btn no-style cart-drawer-desc invert-hover-underline">
+        continue shopping
+      </button>
+    {% else %}
+            <p class="cart-drawer-title">Bag({{cart.item_count}})</p>
+          </div>
+    {% endif %}
+    <div class="cart-darwer-body">
+        {% for item in cart.items %}
+            {%  render 'cart-items' item:item %}   
+        {% endfor   %}
+    </div>
+   {% if cart.item_count>0 %}
+      <div class="cart-drawer-footer">
+            <div class="info">
+                <p class="info-left">estimated total</p>
+                    <p class="info-right">
+                    {{ cart.total_price | money }}
+                    </p>
+            </div>
+            <div class="actions">
+                <button class="cart-drawer-checkout-btn">Checkout</button>
+                <button  class="cart-drawer-btn">Shopping Bag</button>
+            </div>
+  </div>
+    {% endif %}
+</div>
+</div>
+</div>

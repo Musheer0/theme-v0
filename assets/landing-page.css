@@ -1,0 +1,44 @@
+.hero {
+  height: 100vh; /* taller than viewport, enough room to scroll */
+  position: relative;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scrollbar-width: 0;
+  overflow-x: hidden;
+}
+
+/* Each card is full viewport height */
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+background-color: white;
+  position: sticky;
+  top: 0;
+    scroll-snap-align: start;
+  transition: transform 0.6s ease;
+ background-size: cover;
+ background-position: center;
+
+}
+
+/* Demo colors */
+
+.video{background: black;}
+video{
+    object-fit: cover;
+}
+/* Optional: hide scrollbar */
+.hero {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.hero::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+

@@ -1,0 +1,314 @@
+  <style>
+        .header-drop-down-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 60px;
+            margin-inline: auto;
+            justify-items: center;
+            opacity: 0;
+            padding-left: 40px;
+            transition: all 0.43s ease-in-out;
+            pointer-events: none;
+        }
+         .header-drop-down-content-wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+            z-index: 10;
+            visibility: hidden;
+              
+         }
+        .header-drop-down-menu-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-drop-down-menu-header {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .header-drop-down-menu-item {
+            font-size: 12px;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+            transition: color 0.2s ease;
+        }
+
+        .header-drop-down-menu-item:hover {
+            color: #666;
+        }
+
+        .header-drop-down-view-all {
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+       
+        
+    </style>
+<div id="header-drop-down">
+    <div id="header-drop-down-content">
+        <div class="header-drop-down-content-wrapper">
+         <div id="header-drop-down-content-items-highlights" class="header-drop-down-menu-grid">
+            <!-- HANDBAGS Column -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">HANDBAGS</div>
+                <a href="#" class="header-drop-down-menu-item">SHOP</a>
+                <a href="#" class="header-drop-down-menu-item">ICARE</a>
+                <a href="#" class="header-drop-down-menu-item">LE 5 À 7</a>
+                <a href="#" class="header-drop-down-menu-item">LOULOU</a>
+                <a href="#" class="header-drop-down-menu-item">JAMIE</a>
+                <a href="#" class="header-drop-down-menu-item">PUFFER</a>
+                <a href="#" class="header-drop-down-menu-item">GABY</a>
+                <a href="#" class="header-drop-down-menu-item">NIKI</a>
+                <a href="#" class="header-drop-down-menu-item">VOLTAIRE</a>
+                <a href="#" class="header-drop-down-menu-item">SAC DE JOUR</a>
+                <a href="#" class="header-drop-down-menu-item">SHOPPING</a>
+                <a href="#" class="header-drop-down-menu-item">Y</a>
+                <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL HANDBAGS</a>
+            </div>
+
+            <!-- RESORT Column -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">RESORT</div>
+                <a href="#" class="header-drop-down-menu-item">SHOP</a>
+                <a href="#" class="header-drop-down-menu-item">WOMEN</a>
+                <a href="#" class="header-drop-down-menu-item">MEN</a>
+                <a href="#" class="header-drop-down-menu-item">HANDBAGS</a>
+                <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+            </div>
+
+            <!-- GIFTS Column -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">GIFTS</div>
+                <a href="#" class="header-drop-down-menu-item">SHOP</a>
+                <a href="#" class="header-drop-down-menu-item">FOR HER</a>
+                <a href="#" class="header-drop-down-menu-item">FOR HIM</a>
+                <a href="#" class="header-drop-down-menu-item">LIFESTYLE</a>
+                <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+            </div>
+
+            <!-- WOMEN FALL 25 Column -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">WOMEN FALL 25</div>
+                <a href="#" class="header-drop-down-menu-item">SHOP</a>
+                <a href="#" class="header-drop-down-menu-item">HANDBAGS</a>
+                <a href="#" class="header-drop-down-menu-item">SHOES</a>
+                <a href="#" class="header-drop-down-menu-item">ACCESSORIES</a>
+                <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+            </div>
+
+            <!-- MEN FALL 25 Column -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">MEN FALL 25</div>
+                <a href="#" class="header-drop-down-menu-item">SHOP</a>
+                <a href="#" class="header-drop-down-menu-item">BAGS</a>
+                <a href="#" class="header-drop-down-menu-item">SHOES</a>
+                <a href="#" class="header-drop-down-menu-item">ACCESSORIES</a>
+                <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+            </div>
+        </div>
+        </div>
+              <!-- Women -->
+     <div class="header-drop-down-content-wrapper">
+           <div id="header-drop-down-content-items-women" class="header-drop-down-menu-grid"> 
+        <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">READY TO WEAR</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">LEATHER AND COATS</a>
+        <a href="#" class="header-drop-down-menu-item">JACKETS AND PANTS</a>
+        <a href="#" class="header-drop-down-menu-item">DRESSES AND SKIRTS</a>
+        <a href="#" class="header-drop-down-menu-item">SHIRTS AND TOPS</a>
+        <a href="#" class="header-drop-down-menu-item">DENIM</a>
+        <a href="#" class="header-drop-down-menu-item">JERSEY</a>
+        <a href="#" class="header-drop-down-menu-item">KNITWEAR</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- SHOES -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">SHOES</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">LOAFERS</a>
+        <a href="#" class="header-drop-down-menu-item">PUMPS AND SLINGBACKS</a>
+        <a href="#" class="header-drop-down-menu-item">MULES AND WEDGES</a>
+        <a href="#" class="header-drop-down-menu-item">SANDALS</a>
+        <a href="#" class="header-drop-down-menu-item">FLATS</a>
+        <a href="#" class="header-drop-down-menu-item">SNEAKERS</a>
+        <a href="#" class="header-drop-down-menu-item">BOOTS</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- HANDBAGS -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">HANDBAGS</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">SHOULDER BAGS</a>
+        <a href="#" class="header-drop-down-menu-item">CROSSBODY BAGS</a>
+        <a href="#" class="header-drop-down-menu-item">TOP HANDLES</a>
+        <a href="#" class="header-drop-down-menu-item">HOBOS AND BUCKETS</a>
+        <a href="#" class="header-drop-down-menu-item">CLUTCHES AND EVENING</a>
+        <a href="#" class="header-drop-down-menu-item">TOTES</a>
+        <a href="#" class="header-drop-down-menu-item">MINI BAGS</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- SMALL LEATHER GOODS -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">SMALL LEATHER GOODS</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">WALLETS ON CHAIN</a>
+        <a href="#" class="header-drop-down-menu-item">POUCHES</a>
+        <a href="#" class="header-drop-down-menu-item">WALLETS</a>
+        <a href="#" class="header-drop-down-menu-item">CARD CASES</a>
+        <a href="#" class="header-drop-down-menu-item">CASES AND HOLDERS</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">ACCESSORIES</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">BELTS</a>
+        <a href="#" class="header-drop-down-menu-item">HATS AND GLOVES</a>
+        <a href="#" class="header-drop-down-menu-item">SCARVES AND SILK</a>
+        <a href="#" class="header-drop-down-menu-item">SUNGLASSES</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- JEWELRY -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">JEWELRY</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">CUFFS AND BRACELETS</a>
+        <a href="#" class="header-drop-down-menu-item">BROOCHES AND RINGS</a>
+        <a href="#" class="header-drop-down-menu-item">EARRINGS AND NECKLACES</a>
+        <a href="#" class="header-drop-down-menu-item">FINE JEWELRY</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+    </div>
+     </div>
+    <!--MEN-->
+    <div class="header-drop-down-content-wrapper">
+        <div id="header-drop-down-content-items-men" class="header-drop-down-menu-grid">
+
+      <!-- READY TO WEAR -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">READY TO WEAR</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">JACKETS AND PANTS</a>
+        <a href="#" class="header-drop-down-menu-item">LEATHER AND OUTERWEAR</a>
+        <a href="#" class="header-drop-down-menu-item">COATS AND TRENCH</a>
+        <a href="#" class="header-drop-down-menu-item">SHIRTS</a>
+        <a href="#" class="header-drop-down-menu-item">KNITWEAR</a>
+        <a href="#" class="header-drop-down-menu-item">JERSEY</a>
+        <a href="#" class="header-drop-down-menu-item">DENIM</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- SHOES -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">SHOES</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">BOOTS</a>
+        <a href="#" class="header-drop-down-menu-item">LOAFERS</a>
+        <a href="#" class="header-drop-down-menu-item">DERBIES</a>
+        <a href="#" class="header-drop-down-menu-item">SANDALS</a>
+        <a href="#" class="header-drop-down-menu-item">SNEAKERS</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- BAGS -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">BAGS</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">MESSENGERS</a>
+        <a href="#" class="header-drop-down-menu-item">BACKPACKS</a>
+        <a href="#" class="header-drop-down-menu-item">TOTES</a>
+        <a href="#" class="header-drop-down-menu-item">TRAVEL</a>
+        <a href="#" class="header-drop-down-menu-item">BRIEFCASES</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- SMALL LEATHER GOODS -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">SMALL LEATHER GOODS</div>
+        <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+        <a href="#" class="header-drop-down-menu-item">CARD CASES</a>
+        <a href="#" class="header-drop-down-menu-item">WALLETS</a>
+        <a href="#" class="header-drop-down-menu-item">KEYRINGS</a>
+        <a href="#" class="header-drop-down-menu-item">POUCHES</a>
+        <a href="#" class="header-drop-down-menu-item">CASES AND HOLDERS</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="header-drop-down-menu-column">
+          <div class="header-drop-down-menu-header">ACCESSORIES</div>
+          <a href="#" class="header-drop-down-menu-item">NEW ARRIVALS</a>
+          <a href="#" class="header-drop-down-menu-item">BELTS</a>
+        <a href="#" class="header-drop-down-menu-item">JEWELRY</a>
+        <a href="#" class="header-drop-down-menu-item">SUNGLASSES</a>
+        <a href="#" class="header-drop-down-menu-item">HATS AND GLOVES</a>
+        <a href="#" class="header-drop-down-menu-item">TIES AND SILK</a>
+        <a href="#" class="header-drop-down-menu-item header-drop-down-view-all">VIEW ALL</a>
+      </div>
+
+    </div>
+    </div>
+    <!-- SL -->
+    <div class="header-drop-down-content-wrapper">
+        <div id="header-drop-down-content-items-sl" class="header-drop-down-menu-grid">
+            
+            <!-- SL PRODUCTIONS -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">SL PRODUCTIONS</div>
+                <a href="#" class="header-drop-down-menu-item">ABOUT</a>
+                </div>
+                
+                <!-- 2024 -->
+                <div class="header-drop-down-menu-column">
+                    <div class="header-drop-down-menu-header">2024</div>
+        <a href="#" class="header-drop-down-menu-item">FABRICE DU WELZ</a>
+        <a href="#" class="header-drop-down-menu-item">JACQUES AUDIARD</a>
+        <a href="#" class="header-drop-down-menu-item">DAVID CRONENBERG</a>
+        <a href="#" class="header-drop-down-menu-item">PAOLO SORRENTINO</a>
+        </div>
+
+        <!-- 2023 -->
+        <div class="header-drop-down-menu-column">
+            <div class="header-drop-down-menu-header">2023</div>
+            <a href="#" class="header-drop-down-menu-item">PEDRO ALMODÓVAR</a>
+            <a href="#" class="header-drop-down-menu-item">JEAN-LUC GODARD</a>
+            </div>
+            
+            <!-- 2020 -->
+            <div class="header-drop-down-menu-column">
+                <div class="header-drop-down-menu-header">2020</div>
+        <a href="#" class="header-drop-down-menu-item">ABEL FERRARA</a>
+      </div>
+
+      <!-- 2019 -->
+      <div class="header-drop-down-menu-column">
+        <div class="header-drop-down-menu-header">2019</div>
+        <a href="#" class="header-drop-down-menu-item">WONG KAR WAI</a>
+        <a href="#" class="header-drop-down-menu-item">GASPAR NOÉ</a>
+        <a href="#" class="header-drop-down-menu-item">BRET EASTON ELLIS</a>
+        </div>
+        
+    </div>
+     </div>
+</div>
+</div>

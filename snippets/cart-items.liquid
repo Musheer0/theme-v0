@@ -1,0 +1,37 @@
+<!-- snippets/cart-item.liquid -->
+<div class="cart-drawer-item">
+  <!-- product image -->
+  <div class="cart-item-image">
+    <img src="{{ item.image | img_url: 'large' }}" alt="{{ item.title }}">
+  </div>
+
+  <!-- product info -->
+  <div class="cart-item-info">
+    <div class="cart-item-header">
+      <h3 class="cart-item-title">{{ item.product.title }}</h3>
+      <span class="cart-item-price">{{ item.line_price | money }}</span>
+    </div>
+
+    <p class="cart-item-variant">
+      {% unless item.variant.title == "Default Title" %}
+    {{ item.variant.option1 }}
+{% endunless %}
+    {% if item.variant.option2 %} / {{ item.variant.option2 }}{% endif %}
+    {% if item.variant.option3 %} / {{ item.variant.option3 }}{% endif %}
+  </p>
+
+    <!-- Quantity selector -->
+    <div class="cart-item-quantity">
+        <span class="cart-item-quantity-txt">quantity</span>
+      <button type="button" class="qty-btn" data-action="decrease">-</button>
+      <span>{{ item.quantity }}</span>
+      <button type="button" class="qty-btn" data-action="increase">+</button>
+    </div>
+
+    <!-- Remove link -->
+<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-item-remove">
+  REMOVE
+</a>
+
+  </div>
+</div>

@@ -1,0 +1,398 @@
+<!-- === Drop-in Mobile Menu + Mega (accordion-in-mega) === -->
+<div id="mobile-menu" class="mobile-menu" data-toggle="closed">
+  <div class="close-btn-section">
+    <button id="mobile-menu-close" style="filter:invert()" class="no-style">
+      <img src="{{ 'close.svg' | asset_url }}" class="icon-xl" alt="Close Menu">
+    </button>
+
+    <div class="right" style="filter:invert()">
+      {% if customer %}
+        <a href="/account">My Account</a>
+        <a href="/account/logout">Sign out</a>
+      {% else %}
+        <a href="/account/login">Sign in</a>
+      {% endif %}
+
+      <a href="/cart" class="cart-link" style="position: relative;">
+        <img src="{{ 'cart.svg' | asset_url }}" class="icon" alt="Cart">
+        {% if cart.item_count > 0 %}
+          <span class="cart-count">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile links (unchanged classes) -->
+  <div class="mobile-links">
+    <p data-section="highlights" class="desk-top-tab-trigger" data-toggle="closed">Highlights</p>
+    <p data-section="women" class="desk-top-tab-trigger" data-toggle="closed">Women</p>
+    <p data-section="men" class="desk-top-tab-trigger" data-toggle="closed">Men</p>
+    <p data-section="sl" class="desk-top-tab-trigger" data-toggle="closed">SL Productions</p>
+  </div>
+
+  <!-- submenu root (new element we control) -->
+  <div id="submenu-root" data-open="false" aria-hidden="true"></div>
+
+  <p style="margin-top: auto;">2025 &copy;</p>
+</div>
+
+<style>
+  /* NEW styles only — nothing touched from your existing classes */
+  #submenu-root {
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    display: none;       /* hidden until a section opens */
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+  }
+  #submenu-root[data-open="true"] {
+    display: block;
+  }
+
+  .mega-panel {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+  }
+
+  .mega-header { 
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:12px;
+    padding-bottom:10px;
+    margin-top: 40px;
+  }
+  .mega-back {
+    background:transparent;
+    border: none;
+    font-weight:700;
+    font-size:18px;
+    cursor:pointer;
+  }
+  .mega-title { font-weight:700; font-size:16px; }
+
+  .mega-columns {
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top: 10px;
+
+  }
+  .mega-column { display:block; }
+
+  /* Group toggle (the header inside mega menu like "HANDBAGS") */
+  .mega-group-toggle {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    font-weight:500;
+    padding:10px 0;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    font-size:12px;
+    text-align: start;
+    letter-spacing: .02em;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .mega-group-items {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .28s ease;
+    padding-left: 6px;
+    width: 100%;
+  }
+ .mega-group-toggle[aria-expanded="true"] { 
+  
+    font-weight:700;
+  }
+
+  .mega-group-items[data-open="true"] {
+    max-height: 1000px; /* large enough for mobile list */
+  }
+
+  .mega-item {
+    display:block;
+    padding: 8px 0;
+    text-decoration:none;
+     font-weight:500;
+    font-size:12px;
+    color:inherit;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+        width: 100%;
+
+  }
+
+
+</style>
+
+<script>
+  /* ============================
+     PASTE YOUR MENU DATA (array of objects)
+     Expected shape:
+     [
+       {
+         name: "highlights",
+         content: {
+           handbags: [{name:"SHOP", href:"#"}, ...],
+           resort: [...],
+           ...
+         }
+       },
+       { name: "women", content: { readytowear: [...], shoes: [...] } },
+       ...
+     ]
+     ============================ */
+  const menuData = [
+    /* PASTE YOUR FULL DATA HERE (replace this sample) */
+    {
+      name: "highlights",
+      content: {
+        handbags: [
+          { name: "SHOP", href: "#" },
+          { name: "ICARE", href: "#" },
+          { name: "LE 5 À 7", href: "#" },
+          { name: "VIEW ALL HANDBAGS", href: "#" }
+        ],
+        resort: [
+          { name: "SHOP", href: "#" },
+          { name: "WOMEN", href: "#" },
+          { name: "MEN", href: "#" },
+          { name: "VIEW ALL", href: "#" }
+        ],
+        gifts: [
+          { name: "SHOP", href: "#" },
+          { name: "FOR HER", href: "#" },
+          { name: "FOR HIM", href: "#" },
+          { name: "VIEW ALL", href: "#" }
+        ]
+      }
+    },
+    {
+      name: "women",
+      content: {
+        readytowear: [
+          { name: "NEW ARRIVALS", href: "#" },
+          { name: "LEATHER AND COATS", href: "#" },
+          { name: "DRESSES AND SKIRTS", href: "#" }
+        ],
+        shoes: [
+          { name: "NEW ARRIVALS", href: "#" },
+          { name: "LOAFERS", href: "#" },
+          { name: "SNEAKERS", href: "#" }
+        ],
+        handbags: [
+          { name: "NEW ARRIVALS", href: "#" },
+          { name: "SHOULDER BAGS", href: "#" }
+        ]
+      }
+    },
+    {
+      name: "men",
+      content: {
+        ready: [
+          { name: "JACKETS", href: "#" },
+          { name: "T-SHIRTS", href: "#" }
+        ],
+        shoes: [
+          { name: "BOOTS", href: "#" },
+          { name: "SNEAKERS", href: "#" }
+        ]
+      }
+    },
+    {
+      name: "sl",
+      content: {
+        about: [
+          { name: "THE BRAND", href: "#" },
+          { name: "OUR STORY", href: "#" }
+        ],
+        years: [
+          { name: "2024", href: "#" },
+          { name: "2023", href: "#" }
+        ]
+      }
+    }
+  ];
+  /* ============================ end data ============================ */
+
+  // DOM refs
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelector('.mobile-links');
+  const submenuRoot = document.getElementById('submenu-root');
+  const triggers = document.querySelectorAll('.desk-top-tab-trigger');
+
+  // init trigger state attributes
+  triggers.forEach(t => t.setAttribute('data-toggle', 'closed'));
+
+  // store original display to restore later
+  const originalMobileLinksDisplay = (mobileLinks && getComputedStyle(mobileLinks).display) || '';
+
+  function formatLabel(key) {
+    return key.replace(/[_-]/g,' ').replace(/([a-z])([A-Z])/g,'$1 $2').trim().toUpperCase();
+  }
+
+  function getSection(name) {
+    if (!name) return null;
+    const lower = String(name).toLowerCase();
+    return menuData.find(s => String(s.name || '').toLowerCase() === lower) || null;
+  }
+
+  function openMega(sectionName, displayTitle) {
+    const data = getSection(sectionName);
+    if (!data) { console.warn('No data for section:', sectionName); return; }
+
+    // set attributes for state
+    mobileMenu.dataset.toggle = 'open';
+    mobileMenu.dataset.section = sectionName;
+    submenuRoot.dataset.open = 'true';
+    submenuRoot.setAttribute('aria-hidden', 'false');
+    triggers.forEach(t => t.setAttribute('data-toggle', (t.dataset.section === sectionName) ? 'open' : 'closed'));
+
+    // hide the main mobile links (inline so we don't change your CSS file)
+    if (mobileLinks) mobileLinks.style.display = 'none';
+
+    // build mega panel
+    const panel = document.createElement('div');
+    panel.className = 'mega-panel';
+    panel.setAttribute('data-section', sectionName);
+    panel.innerHTML = `
+      <div class="mega-header" data-action="back" style="cursor:pointer">
+        <button class="mega-back" type="button"  aria-label="Back">&lt;</button>
+        <div class="mega-title">${displayTitle || sectionName}</div>
+      </div>
+      <div class="mega-columns"></div>
+    `;
+
+    // fill columns
+    const columnsWrap = panel.querySelector('.mega-columns');
+    const content = data.content || {};
+    const groups = Object.keys(content);
+
+    if (groups.length === 0) {
+      const none = document.createElement('div');
+      none.className = 'mega-empty';
+      none.textContent = 'No items';
+      columnsWrap.appendChild(none);
+    } else {
+      groups.forEach(groupKey => {
+        const col = document.createElement('div');
+        col.className = 'mega-column';
+
+        // group toggle header
+        const btn = document.createElement('button');
+        btn.className = 'mega-group-toggle';
+
+        btn.setAttribute('data-group', groupKey);
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = formatLabel(groupKey);
+        const img = document.createElement('img');
+        img.style.filter = "invert()"
+img.src = "{{ 'ar-down.svg' | asset_url }}";
+img.className = "icon-xl";
+img.alt = "Close Menu";
+
+// append image to button
+btn.appendChild(img);
+        col.appendChild(btn);
+
+        // items container (closed by default)
+        const itemsWrap = document.createElement('div');
+        itemsWrap.className = 'mega-group-items';
+        itemsWrap.setAttribute('data-group', groupKey);
+        itemsWrap.setAttribute('data-open', 'false');
+        itemsWrap.setAttribute('aria-hidden', 'true');
+
+        const items = Array.isArray(content[groupKey]) ? content[groupKey] : [];
+        items.forEach(it => {
+          const a = document.createElement('a');
+          a.className = 'mega-item';
+          a.href = it.href || '#';
+          a.textContent = it.name || '';
+          a.setAttribute('data-link-section', sectionName);
+          a.setAttribute('data-link-name', it.name || '');
+          itemsWrap.appendChild(a);
+        });
+
+        col.appendChild(itemsWrap);
+        columnsWrap.appendChild(col);
+      });
+    }
+
+    // mount panel
+    submenuRoot.innerHTML = '';
+    submenuRoot.appendChild(panel);
+
+    // event delegation inside panel (back / group toggles)
+    panel.addEventListener('click', (e) => {
+      const back = e.target.closest('[data-action="back"]');
+      if (back) {
+        closeMega();
+        return;
+      }
+
+      const groupBtn = e.target.closest('.mega-group-toggle');
+      if (groupBtn) {
+        const g = groupBtn.dataset.group;
+        const itemsEl = panel.querySelector(`.mega-group-items[data-group="${g}"]`);
+        const isOpen = itemsEl.getAttribute('data-open') === 'true';
+        // toggle
+        itemsEl.setAttribute('data-open', isOpen ? 'false' : 'true');
+        itemsEl.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+        groupBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        return;
+      }
+    });
+  }
+
+  function closeMega() {
+    // reset attributes
+    mobileMenu.dataset.toggle = 'closed';
+    delete mobileMenu.dataset.section;
+    submenuRoot.dataset.open = 'false';
+    submenuRoot.setAttribute('aria-hidden', 'true');
+    triggers.forEach(t => t.setAttribute('data-toggle', 'closed'));
+
+    // show main links again
+    if (mobileLinks) mobileLinks.style.display = originalMobileLinksDisplay || '';
+
+    // cleanup panel
+    submenuRoot.innerHTML = '';
+  }
+
+  // wire triggers
+  document.addEventListener('DOMContentLoaded', () => {
+    triggers.forEach(t => {
+      t.addEventListener('click', (ev) => {
+        ev.preventDefault?.();
+        const section = t.dataset.section;
+        openMega(section, t.textContent.trim());
+      });
+    });
+
+    // if close button clicked while mega is open, close mega first (then theme can close whole menu)
+    const closeBtn = document.getElementById('mobile-menu-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        if (submenuRoot.querySelector('.mega-panel')) {
+          closeMega();
+        }
+        // your code probably handles the rest of hiding the #mobile-menu
+      });
+    }
+
+    // clicking overlay (outside panel) closes mega
+    submenuRoot.addEventListener('click', (e) => {
+      if (e.target === submenuRoot) closeMega();
+    });
+  });
+</script>

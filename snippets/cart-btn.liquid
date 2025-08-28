@@ -1,0 +1,32 @@
+  <button  type="button" class="no-style cart-btn" style="position: relative;">
+        <img src="{{ 'cart.svg' | asset_url }}" class="icon" alt="Cart">
+        {% if cart.item_count > 0 %}
+          <span class="cart-count">{{ cart.item_count }}</span>
+        {% endif %}
+      </button>
+
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        let isOpen = false;
+        const drawer = document.getElementById("cart-drawer-parent");
+        const drawerChild = document.getElementById("cart-drawer");
+        const drawerClose = document.getElementById("drawer-close");
+        const handleClick = () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+          drawer.style.transform = 'translateX(0%) scaleX(1)'
+          drawerChild.style.transform = 'translateX(0%) '
+          drawer.style.opacity = 1
+        } else {
+        drawer.style.transform = 'translateX(100%) scaleX(0)'
+        drawerChild.style.transform = 'translateX(100%) '
+        drawer.style.opacity = 0
+    }
+  }
+          drawerClose.addEventListener("click", handleClick);
+        const cartBtns = document.querySelectorAll(".cart-btn"); 
+        cartBtns.forEach(btn => {
+        btn.addEventListener("click",handleClick);
+});
+    })
+</script>

@@ -1,0 +1,207 @@
+  <style>
+      .footer {
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            
+            gap: 60px;
+            padding-top: 100px;
+            padding-left: 10px;
+            align-items: start;
+            justify-content: center;
+
+        }
+        
+        .footer-column h3 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+       
+        .footer-column li {
+            margin-bottom: 12px;
+                                    text-align: center;
+
+        }
+        
+        .footer-column a {
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+                        text-align: center;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .footer-column a:hover {
+            color: #666;
+        }
+        
+        .arrow {
+            font-size: 12px;
+        }
+        
+        .shipping-selector {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #333;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .footer {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+             .footer-column{
+            text-align: center;
+        }
+        }
+        
+        @media (max-width: 480px) {
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        li{
+          text-transform: uppercase;
+        }
+        .section-info{
+            font-size: 14px;
+            display: flex;
+            flex-direction: column ;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-info p {
+            padding: 0;
+            margin: 0;
+            color: white;
+        }
+        .section-link:hover{
+            opacity: 1 !important;
+        }
+    </style>
+
+<section class="hero" id="hero"> 
+  <div class="section video text-white" >
+            <video  muted autoplay loop style="width: 100%;" src="https://mediav.ysl.com/media/v1/pmp4/static/clear/6159029847001/589b378c-ce39-4476-b5cf-5b45f2c63a8c/728c07b0-1b21-47c4-afd8-5cbea23dbeee/main.mp4?akamai_token=exp=1771105586~acl=/media/v1/pmp4/static/clear/6159029847001/589b378c-ce39-4476-b5cf-5b45f2c63a8c/728c07b0-1b21-47c4-afd8-5cbea23dbeee/main.mp4*~hmac=30aff05122b4b1d361cc18c49c5e2f6a588493a19c3a00047bc756e3ba1ad054"></video>
+
+  </div>
+  <a class="section-link" href="/collections/mens">
+  <div class="section blue text-black" id="hero-2"
+    style="background-image: url('https://saint-laurent.dam.kering.com/m/32348b753dbc9705/ecom-SAINT_LAURENT_MF25_HOMEPAGE_DESKTOP-5.jpg');"
+  >
+  <div class="section-info">
+    <p>men's collections</p>
+    <p>discorve the collection</p>
+  </div>
+  </div>
+  </a>
+    <a class="section-link" href="/collections/women">
+      <div class="section green text-black"
+  style="background-image: url('https://saint-laurent.dam.kering.com/m/64091198e71a2625/ecom-SLRD_SHADES_OF_SUMMER_B-O_HOMEPAGE_DESKTOP.jpg');"
+  >
+    <div class="section-info">
+    <p>women's collections</p>
+    <p>discorve the collection</p>
+  </div>
+  </div>
+ 
+  </a>
+  <a class="section-link" href="/collections/all">
+    <div class="section purple text-white">
+        <video muted autoplay loop style="width: 100%;height:100%;" src="
+        https://mediav.ysl.com/media/v1/pmp4/static/clear/6159029847001/15f2dd39-e82d-4a33-bf71-dc0b5e1d4c15/cb08815b-ccf6-4a42-9643-5b2bce5a8686/main.mp4?akamai_token=exp=1771111788~acl=/media/v1/pmp4/static/clear/6159029847001/15f2dd39-e82d-4a33-bf71-dc0b5e1d4c15/cb08815b-ccf6-4a42-9643-5b2bce5a8686/main.mp4*~hmac=ee26188eec4ecfeaa1fbbc24682eaaa3b073b72797b6c41acd5b653d34e51c77
+        "></video>
+  <div class="section-info">
+    <p>all collections</p>
+    <p>discorve all products</p>
+  </div>
+  </div>
+  </a>
+  
+    {% comment %} <footer class="footer section text-black">
+        <div class="footer-column">
+            <div class="shipping-selector">
+                <span>SHIPPING TO<br>UNITED STATES $ / EN</span>
+                 &RightArrow;
+            </div>
+        </div>
+        
+        <div class="footer-column">
+            <ul>
+                <li><a href="#">CLient serivce</a></li>
+                <li><a href="#">SHIPPING & RETURNS</a></li>
+                <li><a href="#">EMAIL US</a></li>
+                <li><a href="#">TRACK ORDER</a></li>
+                <li><a href="#">+1 646 889 1961</a></li>
+                <li><a href="#">RETURN YOUR ORDER</a></li>
+                <li><a href="#">MAKE AN APPOINTMENT &RightArrow;</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <ul>
+                <li><a href="#">COOKIES SETTINGS</a></li>
+                <li><a href="#">ACCESSIBILITY</a></li>
+                <li><a href="#">CAREER</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <div class="shipping-selector">
+                <span>SUBSCRIBE TO THE<br>NEWSLETTER</span>
+            </div>
+        </div>
+    </footer> {% endcomment %}
+</section>
+
+
+<script>
+    const hero = document.getElementById('hero');
+let isScrolling = false;
+
+document.addEventListener('keydown', (e) => {
+  if (isScrolling) return;
+
+  const scrollAmount = window.innerHeight; // 100vh
+  let targetScroll = hero.scrollTop;
+
+  if (e.key === 'ArrowDown') {
+    targetScroll += scrollAmount;
+  } else if (e.key === 'ArrowUp') {
+    targetScroll -= scrollAmount;
+  } else return;
+
+  // Clamp scroll so we don't go out of bounds
+  targetScroll = Math.max(0, Math.min(targetScroll, hero.scrollHeight - hero.clientHeight));
+
+  isScrolling = true;
+  hero.scrollTo({ top: targetScroll, behavior: 'smooth' });
+
+  setTimeout(() => isScrolling = false, 700);
+});
+
+</script>

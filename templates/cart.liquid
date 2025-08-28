@@ -1,0 +1,487 @@
+<style>
+    .cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  padding-top: 100px;
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cart-title {
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.cart-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+      
+}
+@media screen and (max-width: 768px){
+  .cart-content{
+        justify-content: center;
+        align-items: center !important;
+  }
+  .item-details{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.cart-items {
+  flex: 1;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  padding: 30px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item-image img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+}
+
+.item-variant {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.variant-option {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.item-quantity {
+  margin-bottom: 20px;
+}
+
+.quantity-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.quantity-btn {
+  background: none;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity-value {
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.last-one {
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.edit-btn,
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.cart-sidebar {
+  width: 350px;
+  flex-shrink: 0;
+}
+
+.promo-code-section {
+  margin-bottom: 30px;
+}
+
+.promo-toggle {
+  background: none;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.sales-tax-section {
+  margin-bottom: 30px;
+}
+
+.sales-tax-section h4 {
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+}
+
+.zip-code-input {
+  display: flex;
+  gap: 10px;
+}
+
+.zip-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.zip-input::placeholder {
+  color: #999;
+}
+
+.apply-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.order-summary {
+  margin-bottom: 30px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.total-row {
+  font-weight: bold;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: #000;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.payment-methods {
+  margin-bottom: 30px;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.payment-icon {
+  height: 24px;
+  width: auto;
+}
+
+.help-section {
+  margin-bottom: 30px;
+}
+
+.help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.phone-number {
+  font-size: 12px;
+}
+
+.help-hours {
+  font-size: 11px;
+  color: #666;
+  text-align: right;
+}
+
+.collapsible-sections {
+  border-top: 1px solid #eee;
+}
+
+.collapsible-item {
+  border-bottom: 1px solid #eee;
+}
+
+.collapsible-item summary {
+  padding: 15px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.collapsible-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapsible-item summary::after {
+  content: "⌄";
+  position: absolute;
+  right: 0;
+  transition: transform 0.2s;
+}
+
+.collapsible-item[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  padding-bottom: 15px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .cart-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .cart-sidebar {
+    width: 100%;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .help-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .help-hours {
+    text-align: left;
+  }
+}
+
+</style>
+<div class="cart-page ">
+  <div class="cart-container">
+    <div class="cart-header">
+      <h1 class="cart-title">BAG ({{ cart.item_count }})</h1>
+    </div>
+
+    <div class="cart-content">
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div class="item-image">
+              <img src="{{ item.image | img_url: '200x200' }}" alt="{{ item.product.title }}" />
+            </div>
+            
+            <div class="item-details">
+              <h3 class="item-title">{{ item.product.title | upcase }}</h3>
+              <div class="item-variant">
+                {% for option in item.options_with_values %}
+                  <span class="variant-option">{{ option.value | upcase }}</span>
+                {% endfor %}
+              </div>
+              
+              <div class="item-quantity">
+                <span class="quantity-label">QUANTITY</span>
+                <div class="quantity-controls">
+                  <button class="quantity-btn" onclick="updateQuantity({{ item.key }}, {{ item.quantity | minus: 1 }})">-</button>
+                  <span class="quantity-value">{{ item.quantity }}</span>
+                  <button class="quantity-btn" onclick="updateQuantity({{ item.key }}, {{ item.quantity | plus: 1 }})">+</button>
+                </div>
+                {% if item.variant.inventory_quantity <= 1 %}
+                  <span class="last-one">LAST ONE</span>
+                {% endif %}
+              </div>
+              
+              <div class="item-actions">
+                <button class="edit-btn">EDIT</button>
+                <button class="remove-btn" onclick="removeItem({{ item.key }})">REMOVE</button>
+              </div>
+            </div>
+            
+            <div class="item-price">
+              <span class="price">{{ item.final_price | money }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-sidebar">
+        <div class="promo-code-section">
+          <button class="promo-toggle">ENTER A PERSONAL CODE</button>
+        </div>
+
+        <div class="sales-tax-section">
+          <h4>SALES TAX</h4>
+          <div class="zip-code-input">
+            <input type="text" placeholder="ENTER ZIP CODE" class="zip-input">
+            <button class="apply-btn">APPLY</button>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>SHIPPING COST</span>
+            <span>COMPLIMENTARY</span>
+          </div>
+          <div class="summary-row">
+            <span>SALES TAX</span>
+            <span>TO BE CALCULATED</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>ESTIMATED TOTAL</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+
+        <button class="checkout-btn" onclick="window.location.href='/checkout'">
+          CHECKOUT
+        </button>
+
+        <div class="payment-methods">
+          {% render 'payment-icons' %}
+        </div>
+
+        <div class="help-section">
+          <div class="help-header">
+            <span>NEED HELP?</span>
+            <span class="phone-number">📞 +1 646 889 1961</span>
+          </div>
+          <div class="help-hours">
+            <div>(MON - FRI 10AM - 8PM EST)</div>
+            <div>(SATURDAY 10AM - 7PM EST)</div>
+          </div>
+        </div>
+
+        <div class="collapsible-sections">
+          <details class="collapsible-item">
+            <summary>COMPLIMENTARY RETURNS WITHIN 30 DAYS</summary>
+            <div class="collapsible-content">
+              <p>Free returns within 30 days of purchase. Items must be in original condition.</p>
+            </div>
+          </details>
+
+          <details class="collapsible-item">
+            <summary>SECURE SHOPPING</summary>
+            <div class="collapsible-content">
+              <p>Your payment information is processed securely. We do not store credit card details.</p>
+            </div>
+          </details>
+
+          <details class="collapsible-item">
+            <summary>SEND AS GIFT</summary>
+            <div class="collapsible-content">
+              <p>Add gift wrapping and a personalized message to your order.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function updateQuantity(key, quantity) {
+  if (quantity < 1) return;
+  
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: key,
+      quantity: quantity
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    location.reload();
+  });
+}
+
+function removeItem(key) {
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: key,
+      quantity: 0
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    location.reload();
+  });
+}
+</script>
